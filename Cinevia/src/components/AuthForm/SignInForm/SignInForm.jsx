@@ -1,7 +1,12 @@
 import { useState } from 'react';
-import { createUser } from "../../../api";
+import { useNavigate } from 'react-router';
+import { useAuth } from '../../../AuthContext';
+import { createUser } from '../../../api';
 
 const SignInForm = () => {
+  const { login } = useAuth();
+  const navigate = useNavigate();
+
   const [form, setForm] = useState({
     name: '',
     email: '',
@@ -25,14 +30,19 @@ const SignInForm = () => {
     setSuccess(false);
 
     try {
-      await createUser({
+      const user = await createUser({
         name: form.name,
         email: form.email,
         date: form.birthdate,
         password: form.password,
       });
+
+      login(user);
+
       setSuccess(true);
       setForm({ name: '', email: '', birthdate: '', password: '' });
+      
+      navigate('/');
     } catch (err) {
       setError('Błąd podczas rejestracji użytkownika.');
     }

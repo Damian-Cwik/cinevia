@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router";
 import MovieCard from "../MovieCard/MovieCard.jsx";
 import SearchMenu from "../SearchMenu/SearchMenu.jsx";
 
@@ -41,11 +42,15 @@ const Main = ({ categories, searchMenuProps }) => {
       return matchesCategory && matchesSearch;
    });
 
+
+
    return (
       <main className="main-content">
          <section className="movie-grid">
             {filteredMovies.map(movie => (
-               <MovieCard {...movie} key={movie.id} />
+               <Link to={`/movie/${movie.id}`} key={movie.id} className="movie-link">
+                  <MovieCard {...movie} />
+               </Link>
             ))}
          </section>
 

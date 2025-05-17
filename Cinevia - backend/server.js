@@ -23,6 +23,29 @@ app.get('/users/:id', (req, res) => {
   else res.status(404).json({ error: 'User not found' });
 });
 
+app.post('/login', (req, res) => {
+  const { email, password } = req.body;
+
+  const stmt = db.prepare('SELECT * FROM user WHERE email = ?');
+  const user = stmt.get(email);
+
+  if (!user) {
+    return res.status(401).json({ message: 'Nieprawidłowy email lub hasło' });
+  }
+
+  // Jeśli hasła są hashowane: użyj bcrypt.compare
+  // const match = await bcrypt.compare(password, user.password);
+  const match = user.password === password;
+
+  if (!match) {
+    return res.status(401).json({ message: 'Nieprawidłowy email lub hasło' });
+  }
+
+  // Wysyłamy dane użytkownika bez hasła
+  const { password: _, ...userData } = user;
+  res.json(userData);
+});
+
 // Add new user
 app.post('/users', (req, res) => {
   const { name, email, date, password } = req.body;

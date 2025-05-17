@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router";
 import HamburgerButton from "./HamburgerButton/HamburgerButton";
 import NavItemList from "./NavItemList/NavItemList";
 import SearchMenu from "../SearchMenu/SearchMenu";
@@ -30,7 +31,7 @@ const Header = ({ searchMenuProps }) => {
 
    return (
       <header className={styles.header}>
-         <h1 className={styles.logo}>CineVia</h1>
+         <Link to="/" className={styles.link}><h1 className={styles.logo}>CineVia</h1></Link>
          <nav className={styles.nav}>
             <HamburgerButton clickFn={handleClick} isActive={isActive} />
             <NavItemList {...categoryProps} hiding={true} />
@@ -41,7 +42,7 @@ const Header = ({ searchMenuProps }) => {
                   <h1 className={styles.logo}>CineVia</h1>
                </div>
                <NavItemList {...categoryProps} />
-               
+
                <div className={styles.search}>
                   <SearchMenu {...searchMenuProps} />
                </div>

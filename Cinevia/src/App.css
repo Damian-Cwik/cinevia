@@ -29,6 +29,11 @@ body {
   height: calc(100% - 80px);
 }
 
+.movie-link{
+  text-decoration: none;
+}
+
+
 /* Movie grid */
 .movie-grid {
   flex: 1;

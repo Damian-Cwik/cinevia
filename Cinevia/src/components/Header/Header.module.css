@@ -17,6 +17,10 @@
   cursor: pointer;
 }
 
+.link{
+  text-decoration: none;
+}
+
 /*Hambuger Menu*/
 .navigation {
   transition: transform .3s .1s ease-in-out;
