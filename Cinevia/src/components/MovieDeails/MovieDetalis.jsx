@@ -29,6 +29,8 @@ const MovieDetails = ({ type }) => {
   const [video, setVideo] = useState("");
   const [isFavorite, setIsFavorite] = useState(false);
   const [isInMyList, setIsInMyList] = useState(false);
+  const [favPulse, setFavPulse] = useState(false);
+  const [listPulse, setListPulse] = useState(false);
 
   // Pobieranie szczegółów (film/serial)
   useEffect(() => {
@@ -101,6 +103,8 @@ const MovieDetails = ({ type }) => {
 
   // Dodawanie/usuwanie z ulubionych
   const toggleFavorite = () => {
+    setFavPulse(true);
+    setTimeout(() => setFavPulse(false), 400);
     if (!user || !details) return;
 
     if (isFavorite) {
@@ -130,6 +134,8 @@ const MovieDetails = ({ type }) => {
 
   // Dodawanie/usuwanie z "Moja Lista"
   const toggleMyList = () => {
+    setListPulse(true);
+    setTimeout(() => setListPulse(false), 400);
     if (!user || !details) return;
 
     if (isInMyList) {
@@ -186,24 +192,37 @@ const MovieDetails = ({ type }) => {
             {user && (
               <>
                 <button
-                  className={`favorite-button ${isFavorite ? "favorited" : ""}`}
+                  className={`favorite-button ${isFavorite ? "favorited" : ""} ${favPulse ? "button-pulse" : ""}`}
                   onClick={toggleFavorite}
+                  style={{ position: "relative", overflow: "visible" }}
                 >
-                  {isFavorite
-                    ? "Usuń z ulubionych ❤️"
-                    : "Dodaj do ulubionych 🤍"}
+                  {isFavorite ? "Usuń z ulubionych ❤️" : "Dodaj do ulubionych 🤍"}
+                  {favPulse && (
+                    <span className="hearts-container">
+                      <span className="heart heart1">❤️</span>
+                      <span className="heart heart2">❤️</span>
+                      <span className="heart heart3">❤️</span>
+                    </span>
+                  )}
                 </button>
                 <button
-                  className={`add-to-list-button ${isInMyList ? "in-list" : ""}`}
+                  className={`add-to-list-button ${isInMyList ? "in-list" : ""} ${listPulse ? "button-pulse" : ""}`}
                   onClick={toggleMyList}
+                  style={{ position: "relative", overflow: "visible" }}
                 >
                   {isInMyList
-                    ? "Usuń z mojej listy 📄"
+                    ? "Usuń z mojej listy ✖️📄"
                     : "Dodaj do mojej listy 📄"}
+                  {listPulse && (
+                    <span className="papers-container">
+                      <span className="paper paper1">📄</span>
+                      <span className="paper paper2">📄</span>
+                      <span className="paper paper3">📄</span>
+                    </span>
+                  )}
                 </button>
               </>
             )}
-
             {video && (
               <div className="trailer-wrapper">
                 <iframe

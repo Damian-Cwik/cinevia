@@ -10,6 +10,15 @@ const Profile = () => {
   const { logout } = useAuth();
   const [user, setUser] = useState(null);
   const [favoriteMovies, setFavoriteMovies] = useState([]);
+  const [nasaPic, setNasaPic] = useState();
+
+  const options = {
+    method: "GET",
+    headers: {
+      accept: "application/json",
+      Authorization: import.meta.env.VITE_NASA_API_KEY,
+    },
+  };
 
   // Pobieranie danych użytkownika
   useEffect(() => {
@@ -18,6 +27,16 @@ const Profile = () => {
       .then((data) => setUser(data))
       .catch((err) => console.error(err));
   }, [id]);
+
+  useEffect(() => {
+    const endpoint = `https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY`;
+    fetch(endpoint, options)
+    .then((res) => res.json())
+    .then((res) => setNasaPic(res));
+
+    console.log(nasaPic)
+
+  }, [])
 
   // Pobieranie ulubionych filmów z backendu
   useEffect(() => {

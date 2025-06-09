@@ -1,4 +1,6 @@
 .movieCard {
+  max-width: 285px;
+  max-height: 550px;
   background: #222;
   border-radius: 8px;
   overflow: hidden;
