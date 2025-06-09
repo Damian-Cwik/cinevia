@@ -29,12 +29,13 @@ const Profile = () => {
   }, [id]);
 
   useEffect(() => {
-    const endpoint = `https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY`;
-    fetch(endpoint, options)
-    .then((res) => res.json())
-    .then((res) => setNasaPic(res));
+    const endpoint = `https://api.nasa.gov/planetary/apod?api_key=${import.meta.env.VITE_NASA_API_KEY}`;
+    fetch(endpoint)
+      .then((res) => res.json())
+      .then((res) => setNasaPic(res));
 
     console.log(nasaPic)
+    console.log(`https://api.nasa.gov/planetary/apod?api_key=${import.meta.env.VITE_NASA_API_KEY}`)
 
   }, [])
 
@@ -89,7 +90,17 @@ const Profile = () => {
   return (
     <>
       <Header />
-      <div className={styles.profileContainer}>
+      <div className={styles.profileContainer} style={
+        nasaPic && nasaPic.url
+          ? {
+            backgroundImage: `url(${nasaPic.url})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }
+          : {
+            background: 'linear-gradient(135deg, #232526 0%, #414345 100%)',
+          }
+      }>
         <header className={styles.header}>
           <h1 className={styles.h1}>Witaj, {user.name}!</h1>
           <button className={styles.logoutBtn} onClick={handleLogout}>

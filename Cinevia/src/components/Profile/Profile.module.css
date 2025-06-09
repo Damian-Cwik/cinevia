@@ -1,8 +1,7 @@
 .profileContainer {
   max-width: 700px;
   margin: 2rem auto;
-  padding: 1.5rem;
-  background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+  padding: 1.5rem; 
   color: white;
   border-radius: 12px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.3);
