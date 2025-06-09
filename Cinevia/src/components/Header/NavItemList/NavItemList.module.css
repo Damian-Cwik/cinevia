@@ -1,0 +1,127 @@
+.navigationList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  margin-top: 50px;
+  list-style: none;
+}
+
+.navCategory {
+  display: none;
+}
+
+.navButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  color: #aaa;
+  text-decoration: none;
+  width: 115px;
+  height: 42px;
+  margin-bottom: 7px;
+  font-size: 1.2rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 10px 0;
+  position: relative;
+  transition: color 0.3s;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.navButton {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.navButton::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: rgba(77, 213, 153, 0.1);
+  transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: -1;
+}
+
+.navButton:hover::before {
+  width: 100%;
+}
+
+.navButton.active::after,
+.navButton:hover::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: #4DD599;
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-origin: left center;
+}
+
+.navButton.active::after,
+.navButton:hover::after {
+  width: 100%;
+}
+
+.navButton:hover {
+  color: #fff;
+  transform: translateY(-3px) scale(1.05);
+  text-shadow: 0 2px 8px rgba(77, 213, 153, 0.4);
+}
+
+.hideList {
+  display: none;
+}
+
+/* Animacja dla aktywnego przycisku */
+.navButton.active {
+  animation: pulseActive 2s infinite;
+}
+
+@keyframes pulseActive {
+  0% {
+    box-shadow: 0 0 0 0 rgba(77, 213, 153, 0.2);
+  }
+
+  70% {
+    box-shadow: 0 0 0 10px rgba(77, 213, 153, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(77, 213, 153, 0);
+  }
+}
+
+
+/*Media queries*/
+
+@media (min-width: 992px) {
+  .hideList {
+    display: flex;
+  }
+  
+  .navigationList {
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 100%;
+    height: 100%;
+    margin-top: 0;
+    padding-top: 7px;
+  }
+
+  .navButton {
+    margin: 0 7px;
+    padding: 0;
+  }
+}

@@ -1,0 +1,30 @@
+.movie-item-with-remove {
+  position: relative;
+  display: inline-block;
+  margin: 10px;
+}
+
+.remove-button {
+  display: block;
+  margin-top: 5px;
+  background-color: #e74c3c;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.remove-button:hover {
+  background-color: #c0392b;
+}
+.my-list-content .movie-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 300px); /* stała szerokość kart */
+  gap: 20px;
+  justify-content: start;
+}
+
+.my-list-content{
+  margin: 40px 60px;
+}

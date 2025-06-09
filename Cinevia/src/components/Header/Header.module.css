@@ -1,0 +1,81 @@
+.header {
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 60px;
+  background-color: #111;
+  border-bottom: 1px solid #333;
+  animation: fadeInDown 0.8s ease-out;
+  transform-origin: top;
+}
+
+.logo {
+  color: #4DD599;
+  font-size: 2.5rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.link{
+  text-decoration: none;
+}
+
+/*Hambuger Menu*/
+.navigation {
+  transition: transform .3s .1s ease-in-out;
+}
+
+.navigation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  background-color: #111;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translateX(100%);
+  z-index: 1000;
+}
+
+.navigationActive {
+  transform: translateX(0px);
+}
+
+.navWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+  width: 90%;
+  padding: 0 10px 0;
+  margin: 10px 0;
+}
+
+/*Nawigacja*/
+
+.nav {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 100%;
+  width: 50%;
+}
+
+.search {
+  width: 90%;
+  padding: 20px 0; 
+}
+
+
+/*Media queries*/
+
+@media (min-width: 992px) {
+
+  .navigation {
+    display: none;
+  }
+
+}

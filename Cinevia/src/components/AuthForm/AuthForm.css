@@ -1,0 +1,158 @@
+/*Header*/
+.header {
+   height: 80px;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   padding: 0 5%;
+   background-color: #111;
+   border-bottom: 1px solid #333;
+   animation: fadeInDown 0.8s ease-out;
+   transform-origin: top;
+}
+
+.logo {
+   color: #4DD599;
+   font-size: 2.5rem;
+   font-weight: 700;
+   cursor: pointer;
+}
+
+.link {
+   text-decoration: none;
+}
+
+/*Slider*/
+
+.container {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   height: calc(100vh - 80px);
+   width: 90%;
+   max-width: 585px;
+   margin: auto;
+}
+
+.switchBox {
+   position: relative;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   width: 100%;
+   height: 55px;
+   border-radius: 50px;
+   margin-top: 25px;
+   background-color: #333;
+   overflow: hidden;
+}
+
+/* .slider {
+   position: absolute;
+   width: 50%;
+   height: 100%;
+   border-radius: 50px;
+   background-color: #555;
+   z-index: 0;
+   transition: transform 0.3s ease;
+} */
+
+.slider {
+   position: absolute;
+   top: 4px;
+   left: 4px;
+   width: calc(50% - 4px);
+   height: calc(100% - 8px);
+   border-radius: 50px;
+   background-color: #555;
+   z-index: 0;
+   transition: transform 0.3s ease;
+}
+
+.button {
+   position: relative;
+   z-index: 1;
+   width: 50%;
+   height: 100%;
+   font-weight: 600;
+   font-size: 14px;
+   border-radius: 50px;
+   cursor: pointer;
+   color: #fff;
+   background-color: transparent;
+   border: none;
+}
+
+.left {
+   transform: translateX(0%);
+}
+
+.right {
+   transform: translateX(100%);
+}
+
+
+/*Form*/
+form {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   width: 100%;
+   margin-top: 30px;
+}
+
+.box {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   width: 100%;
+   margin-bottom: 30px;
+}
+
+.label {
+   margin: 0 0 7px 7px;
+}
+
+.input {
+   width: 100%;
+   height: 55px;
+   color: #fff;
+   padding: 0 25px;
+   font-size: 15px;
+   border-radius: 50px;
+   border: 1px solid #555;
+   background-color: inherit;
+}
+
+.date::-webkit-calendar-picker-indicator {
+  display: none;
+  -webkit-appearance: none;
+}
+
+.date {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: none;
+  color: white;
+}
+
+.submitButton {
+   width: 100%;
+   height: 55px;
+   border: none;
+   color: #fff;
+   font-size: 16px;
+   font-weight: 600;
+   border-radius: 50px;
+   cursor: pointer;
+   background-color: #333;
+   background-color: #333;
+   transition: background-color 0.3s ease;
+}
+
+.submitButton:hover {
+   background-color: #555;
+}
