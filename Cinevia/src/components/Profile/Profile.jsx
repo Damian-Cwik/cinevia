@@ -32,7 +32,12 @@ const Profile = () => {
     const endpoint = `https://api.nasa.gov/planetary/apod?api_key=${import.meta.env.VITE_NASA_API_KEY}`;
     fetch(endpoint)
       .then((res) => res.json())
-      .then((res) => setNasaPic(res));
+      .then((res) => {
+        setNasaPic(res);
+        if (res.url) {
+          localStorage.setItem('nasaPicUrl', res.url);
+        }
+      });
 
     console.log(nasaPic)
     console.log(`https://api.nasa.gov/planetary/apod?api_key=${import.meta.env.VITE_NASA_API_KEY}`)
@@ -93,7 +98,7 @@ const Profile = () => {
       <div className={styles.profileContainer} style={
         nasaPic && nasaPic.url
           ? {
-            backgroundImage: `url(${nasaPic.url})`,
+            backgroundImage: `url(${localStorage.getItem('nasaPicUrl')})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
           }
